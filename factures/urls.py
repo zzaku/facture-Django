@@ -1,22 +1,28 @@
 from django.urls import path
 from . import views
+from .views import (
+    FactureCreateView, FactureUpdateView, FactureDeleteView, FactureDetailView, FactureListView,
+    ClientCreateView, ClientUpdateView, ClientDeleteView, ClientDetailView, ClientListView,
+    CategorieCreateView, CategorieUpdateView, CategorieDeleteView, CategorieDetailView, CategorieListView
+)
 
 urlpatterns = [
-    path('modifier/<int:pk>/', views.modifier_facture, name='modifier_facture'),
-    path('supprimer/<int:pk>/', views.supprimer_facture, name='supprimer_facture'),
-    path('afficher/<int:pk>/', views.afficher_facture, name='afficher_facture'),
-    path('', views.liste_factures, name='liste_factures'),
+    path('modifier/<int:pk>/', FactureUpdateView.as_view(), name='modifier_facture'),
+    path('supprimer/<int:pk>/', FactureDeleteView.as_view(), name='supprimer_facture'),
+    path('afficher/<int:pk>/', FactureDetailView.as_view(), name='afficher_facture'),
+    path('<int:pk>/pdf/', FactureDetailView.as_view(), name='pdf_facture'),
+    path('', FactureListView.as_view(), name='liste_factures'),
+    path('clients/<int:client_id>/creer_facture/', FactureCreateView.as_view(), name='creer_facture'),
 
-    path('categories/', views.liste_categories, name='liste_categories'),
-    path('categories/afficher/<int:pk>/', views.afficher_categorie, name='afficher_categorie'),
-    path('categories/creer/', views.creer_categorie, name='creer_categorie'),
-    path('categories/modifier/<int:pk>/', views.modifier_categorie, name='modifier_categorie'),
-    path('categories/supprimer/<int:pk>/', views.supprimer_categorie, name='supprimer_categorie'),
+    path('categories/', CategorieListView.as_view(), name='liste_categories'),
+    path('categories/afficher/<int:pk>/', CategorieDetailView.as_view(), name='afficher_categorie'),
+    path('categories/creer/', CategorieCreateView.as_view(), name='creer_categorie'),
+    path('categories/modifier/<int:pk>/', CategorieUpdateView.as_view(), name='modifier_categorie'),
+    path('categories/supprimer/<int:pk>/', CategorieDeleteView.as_view(), name='supprimer_categorie'),
 
-    path('clients/', views.liste_clients, name='liste_clients'),
-    path('clients/afficher/<int:pk>/', views.afficher_client, name='afficher_client'),
-    path('clients/creer/', views.creer_client, name='creer_client'),
-    path('clients/modifier/<int:pk>/', views.modifier_client, name='modifier_client'),
-    path('clients/supprimer/<int:pk>/', views.supprimer_client, name='supprimer_client'),
-    path('clients/<int:client_id>/creer_facture/', views.creer_facture, name='creer_facture')
+    path('clients/', ClientListView.as_view(), name='liste_clients'),
+    path('clients/afficher/<int:pk>/', ClientDetailView.as_view(), name='afficher_client'),
+    path('clients/creer/', ClientCreateView.as_view(), name='creer_client'),
+    path('clients/modifier/<int:pk>/', ClientUpdateView.as_view(), name='modifier_client'),
+    path('clients/supprimer/<int:pk>/', ClientDeleteView.as_view(), name='supprimer_client'),
 ]

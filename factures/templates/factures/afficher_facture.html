@@ -10,7 +10,7 @@
     <ul>
         <li>Numéro : {{ facture.numero }}</li>
         <li>Date d'émission : {{ facture.date_emission }}</li>
-        <li>Montant : {{ facture.montant }}€</li>
+        <li>Montant : {{ facture.montant_ht }}€</li>
         <li>Catégorie : {{ facture.categorie.nom }}</li>
         <li>Payée : {{ facture.est_payee|yesno:"Oui,Non" }}</li>
     </ul>

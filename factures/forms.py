@@ -14,7 +14,7 @@ class SignUpForm(UserCreationForm):
 class FactureForm(forms.ModelForm):
     class Meta:
         model = Facture
-        fields = ['numero', 'date_emission', 'montant', 'categorie', 'est_payee']
+        fields = ['numero', 'date_emission', 'montant_ht', 'categorie', 'est_payee']
 
 class CategorieForm(forms.ModelForm):
     class Meta:

@@ -26,3 +26,7 @@ coverage/
 # D'autres fichiers ou répertoires à ignorer
 .DS_Store
 Thumbs.db
+
+venv/
+env/
+.venv/
