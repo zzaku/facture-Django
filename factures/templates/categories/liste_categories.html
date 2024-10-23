@@ -1,0 +1,17 @@
+<h1>Liste des Catégories</h1>
+<table>
+    <tr>
+        <th>Nom</th>
+        <th>Actions</th>
+    </tr>
+    {% for categorie in categories %}
+    <tr>
+        <td>{{ categorie.nom }}</td>
+        <td>
+            <a href="{% url 'modifier_categorie' categorie.pk %}">Modifier</a> |
+            <a href="{% url 'supprimer_categorie' categorie.pk %}">Supprimer</a>
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+<a href="{% url 'creer_categorie' %}">Ajouter une nouvelle catégorie</a>

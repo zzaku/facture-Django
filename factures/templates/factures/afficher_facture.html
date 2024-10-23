@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Détails de la Facture</title>
+</head>
+<body>
+    <h1>Détails de la Facture</h1>
+    <ul>
+        <li>Numéro : {{ facture.numero }}</li>
+        <li>Date d'émission : {{ facture.date_emission }}</li>
+        <li>Montant : {{ facture.montant }}€</li>
+        <li>Catégorie : {{ facture.categorie.nom }}</li>
+        <li>Payée : {{ facture.est_payee|yesno:"Oui,Non" }}</li>
+    </ul>
+    <a href="{% url 'liste_factures' %}">Retour à la liste des factures</a>
+</body>
+</html>

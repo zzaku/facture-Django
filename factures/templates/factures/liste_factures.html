@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Liste des Factures</title>
+</head>
+<body>
+    <h1>Liste des Factures</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Numéro</th>
+                <th>Date</th>
+                <th>Montant</th>
+                <th>Catégorie</th>
+                <th>Payée</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for facture in factures %}
+            <tr>
+                <td>{{ facture.numero }}</td>
+                <td>{{ facture.date_emission }}</td>
+                <td>{{ facture.montant }}€</td>
+                <td>{{ facture.categorie }}</td>
+                <td>{{ facture.est_payee|yesno:"Oui,Non" }}</td>
+                <td>
+                    <a href="{% url 'afficher_facture' facture.pk %}">Voir</a> |
+                    <a href="{% url 'modifier_facture' facture.pk %}">Modifier</a> |
+                    <a href="{% url 'supprimer_facture' facture.pk %}">Supprimer</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>
